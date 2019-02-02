@@ -1,0 +1,11 @@
+.div-centrado{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-centrado{
+    display: flex;
+}
