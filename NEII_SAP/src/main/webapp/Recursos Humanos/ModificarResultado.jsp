@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ContratarEmpleado
-    Created on : 2/02/2019, 05:53:48 PM
+    Document   : ModificarResultado
+    Created on : 3/02/2019, 11:00:52 AM
     Author     : Windows 10 Pro
 --%>
 
@@ -55,10 +55,18 @@
                             <tbody>
                                 <tr>
                                     <td>
+                                        ID&nbsp;del&nbsp;empleado
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" id="idEmpMod" name="idEmpMod" readonly="readonly">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Nombre
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreEmp" name="nombreEmp" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="nombreEmpMod" name="nombreEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -66,7 +74,7 @@
                                         Apellidos
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="apellidoEmp" name="apellidoEmp" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="apellidoEmpMod" name="apellidoEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,7 +82,7 @@
                                         &Aacute;rea
                                     </td>
                                     <td>
-                                        <select class="custom-select custom-select-sm" id="areaEmp" name="areaEmp" required="required">
+                                        <select class="custom-select custom-select-sm" id="areaEmpMod" name="areaEmpMod" required="required">
                                             <option selected="selected" value="">Selecciona&nbsp;un&nbsp;&aacute;rea...</option>
                                             <option value="1">Gerencia</option>
                                             <option value="2">Recursos&nbsp;Humanos</option>
@@ -90,7 +98,7 @@
                                         Direcci&oacute;n
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="dirEmp" name="dirEmp" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="dirEmpMod" name="dirEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +106,7 @@
                                         Sueldo
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" step="any" id="sueldoEmp" name="sueldoEmp" required="required">
+                                        <input type="number" class="form-control form-control-sm" step="any" id="sueldoEmpMod" name="sueldoEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +114,7 @@
                                         Cuenta
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="16" id="cuentaEmp" name="cuentaEmp" required="required">
+                                        <input type="text" class="form-control form-control-sm" maxlength="16" id="cuentaEmpMod" name="cuentaEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -114,13 +122,13 @@
                                         Contrase&ntilde;a
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="passEmp" name="passEmp" required="required">
+                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="passEmpMod" name="passEmpMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Registrar">
+                                            <input type="submit" class="btn btn-success" value="Modificar">
                                         </center>
                                     </td>
                                 </tr>

@@ -1,18 +1,10 @@
 <%-- 
-    Document   : BuscarResultado
-    Created on : 2/02/2019, 10:06:56 PM
+    Document   : ModificarEmpleado
+    Created on : 3/02/2019, 10:55:13 AM
     Author     : Windows 10 Pro
 --%>
 
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    HttpSession sesion = request.getSession(true);
-    ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
-    if(lista.isEmpty()){
-        response.sendRedirect("BuscarEmpleado.jsp");
-    }
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,35 +50,27 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <scroll-container>
-                        <table align="center">
-                            <tr>
-                                <td>ID</td>
-                                <td>Nombre</td>
-                                <td>Apellido</td>
-                                <td>&Aacute;rea</td>
-                                <td>Direcci&oacute;n</td>
-                                <td>Sueldo</td>
-                                <td>Cuenta</td>
-                                <td>Status</td>
-                                <td>Contrase&ntilde;a</td>
-                            </tr>
-                            <tr>
-                                <%
-                                    for(int i = 0 ; i < lista.size() ; i++){
-                                        if(i%9 == 0){
-                                            %>
-                            </tr>
-                            <tr>
-                                            <%
-                                        }%>
-                                        <td><%= lista.get(i) %></td>
-                                <%
-                                    }
-                                %>
-                            </tr>
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        ID&nbsp;de&nbsp;empleado
+                                    </td>
+                                    <td>
+                                        <input type="number" step="any" class="form-control form-control-sm" id="idEmpBuscarMod" name="idEmpBuscarMod" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <input type="submit" class="btn btn-success" value="Buscar">
+                                        </center>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
-                    </scroll-container>
+                    </form>
                 </div>
             </div>
         </div><!-- FIN DE SECCION PRINCIPAL -->

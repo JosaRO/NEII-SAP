@@ -1,6 +1,6 @@
 <%-- 
-    Document   : BuscarResultado
-    Created on : 2/02/2019, 10:06:56 PM
+    Document   : BuscarTranResultado
+    Created on : 3/02/2019, 12:54:25 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -8,9 +8,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);
-    ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
+    ArrayList lista = (ArrayList) sesion.getAttribute("transaccion");
     if(lista.isEmpty()){
-        response.sendRedirect("BuscarEmpleado.jsp");
+        response.sendRedirect("BuscarTranResultado.jsp");
     }
 %>
 <!DOCTYPE html>
@@ -23,26 +23,25 @@
         <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <link href="../Recursos/css/Estilos.css" rel="stylesheet" type="text/css"/>
         <script src="../Recursos/js/Validaciones.js" type="text/javascript"></script>
-        <title>Recursos&nbsp;Humanos</title>
+        <title>Contabilidad</title>
     </head>
     <body onload="regreso();">
         <div class="row"><!-- INICIO DE NAVBAR -->
             <div class="container-fluid">
                 <header class="sticky-top">
                     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                        <a href="#" class="navbar-brand text-white">Recursos&nbsp;Humanos</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#rh_navbar" aria-controls="rh_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <a href="#" class="navbar-brand text-white">Contabilidad</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#con_navbar" aria-controls="con_navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="rh_navbar">
+                        <div class="collapse navbar-collapse" id="con_navbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="empleado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empleado</a>
-                                    <div class="dropdown-menu bg-primary" aria-labelledby="empleado">
-                                        <a class="nav-link text-white" href="ContratarEmpleado.jsp">Contrataci&oacute;n</a>
-                                        <a class="nav-link text-white" href="DespedirEmpleado.jsp">Despido</a>
-                                        <a class="nav-link text-white" href="BuscarEmpleado.jsp">Buscar</a>
-                                        <a class="nav-link text-white" href="ModificarEmpleado.jsp">Modificar&nbsp;informaci&oacute;n</a>
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="movimiento" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacci&oacute;n</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="movimiento">
+                                        <a class="nav-link text-white" href="VerTransaccion.jsp">Ver&nbsp;transacciones</a>
+                                        <a class="nav-link text-white" href="BuscarTransaccion.jsp">Buscar&nbsp;transacci&oacute;n</a>
+                                        <a class="nav-link text-white" href="BalanceGeneral.jsp">Balance&nbsp;general</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -62,19 +61,15 @@
                         <table align="center">
                             <tr>
                                 <td>ID</td>
-                                <td>Nombre</td>
-                                <td>Apellido</td>
-                                <td>&Aacute;rea</td>
-                                <td>Direcci&oacute;n</td>
-                                <td>Sueldo</td>
-                                <td>Cuenta</td>
-                                <td>Status</td>
-                                <td>Contrase&ntilde;a</td>
+                                <td>Responsable</td>
+                                <td>Tipo</td>
+                                <td>Cantidad</td>
+                                <td>Fecha</td>
                             </tr>
                             <tr>
                                 <%
                                     for(int i = 0 ; i < lista.size() ; i++){
-                                        if(i%9 == 0){
+                                        if(i%4 == 0){
                                             %>
                             </tr>
                             <tr>
@@ -90,5 +85,4 @@
                 </div>
             </div>
         </div><!-- FIN DE SECCION PRINCIPAL -->
-    </body>
 </html>
