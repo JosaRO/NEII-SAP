@@ -54,9 +54,6 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Tipo
-                                    </td>
-                                    <td>
                                         N&uacute;mero&nbsp;de&nbsp;movimientos
                                     </td>
                                     <td>
@@ -66,7 +63,6 @@
                                 <tr>
                                     <td>Cargos</td>
                                     <td></td>
-                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>Abonos</td>
@@ -75,7 +71,6 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td></td>
                                     <td></td>
                                 </tr>
                             </tbody>

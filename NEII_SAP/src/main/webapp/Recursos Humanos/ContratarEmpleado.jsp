@@ -63,54 +63,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Apellidos
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="apellidoEmp" name="apellidoEmp" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &Aacute;rea
-                                    </td>
-                                    <td>
-                                        <select class="custom-select custom-select-sm" id="areaEmp" name="areaEmp" required="required">
-                                            <option selected="selected" value="">Selecciona&nbsp;un&nbsp;&aacute;rea...</option>
-                                            <option value="1">Gerencia</option>
-                                            <option value="2">Recursos&nbsp;Humanos</option>
-                                            <option value="3">Contabilidad</option>
-                                            <option value="4">Ventas</option>
-                                            <option value="5">Compras</option>
-                                            <option value="6">Inventario</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Direcci&oacute;n
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="dirEmp" name="dirEmp" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Sueldo
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm" step="any" id="sueldoEmp" name="sueldoEmp" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Cuenta
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="16" id="cuentaEmp" name="cuentaEmp" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         Contrase&ntilde;a
                                     </td>
                                     <td>

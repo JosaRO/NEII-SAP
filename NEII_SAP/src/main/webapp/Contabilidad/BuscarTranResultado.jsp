@@ -62,7 +62,6 @@
                             <tr>
                                 <td>ID</td>
                                 <td>Responsable</td>
-                                <td>Tipo</td>
                                 <td>Cantidad</td>
                                 <td>Fecha</td>
                             </tr>

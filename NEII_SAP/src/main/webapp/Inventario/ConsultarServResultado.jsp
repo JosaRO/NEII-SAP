@@ -1,6 +1,6 @@
 <%-- 
-    Document   : BuscarResultado
-    Created on : 2/02/2019, 10:06:56 PM
+    Document   : ConsultarServResultado
+    Created on : 2/03/2019, 02:44:39 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -10,7 +10,7 @@
     HttpSession sesion = request.getSession(true);
     ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
     if(lista.isEmpty()){
-        response.sendRedirect("BuscarEmpleado.jsp");
+        response.sendRedirect("ConsultarServicio.jsp");
     }
 %>
 <!DOCTYPE html>
@@ -23,27 +23,24 @@
         <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <link href="../Recursos/css/Estilos.css" rel="stylesheet" type="text/css"/>
         <script src="../Recursos/js/Validaciones.js" type="text/javascript"></script>
-        <title>Recursos&nbsp;Humanos</title>
+        <title>Inventario</title>
     </head>
     <body onload="regreso();">
         <div class="row"><!-- INICIO DE NAVBAR -->
             <div class="container-fluid">
                 <header class="sticky-top">
                     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                        <a href="#" class="navbar-brand text-white">Recursos&nbsp;Humanos</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#rh_navbar" aria-controls="rh_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <a href="#" class="navbar-brand text-white">Inventario</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="rh_navbar">
+                        <div class="collapse navbar-collapse" id="inv_navbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="empleado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empleado</a>
-                                    <div class="dropdown-menu bg-primary" aria-labelledby="empleado">
-                                        <a class="nav-link text-white" href="ContratarEmpleado.jsp">Contrataci&oacute;n</a>
-                                        <a class="nav-link text-white" href="DespedirEmpleado.jsp">Despido</a>
-                                        <a class="nav-link text-white" href="BuscarEmpleado.jsp">Buscar</a>
-                                        <a class="nav-link text-white" href="ModificarEmpleado.jsp">Modificar&nbsp;informaci&oacute;n</a>
-                                    </div>
+                                    <a class="nav-link bg-primary text-white" href="ConsultarProducto.jsp">Consultar&nbsp;producto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link bg-primary text-white" href="ConsultarServicio.jsp">Consultar&nbsp;servicios</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="../CerrarSesion" class="nav-link bg-primary text-white">Cerrar&nbsp;sesi&oacute;n</a>
@@ -55,7 +52,7 @@
             </div>
         </div>
         <!-- FIN DE NAVBAR -->
-        <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
+        <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
                     <scroll-container>
@@ -63,8 +60,8 @@
                             <tr>
                                 <td>ID</td>
                                 <td>Nombre</td>
-                                <td>Status</td>
-                                <td>Contrase&ntilde;a</td>
+                                <td>Descripci&oacute;n</td>
+                                <td>Costo</td>
                             </tr>
                             <tr>
                                 <%

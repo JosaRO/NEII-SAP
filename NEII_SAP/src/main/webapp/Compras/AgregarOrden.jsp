@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ModificarResultado
-    Created on : 3/02/2019, 11:00:52 AM
+    Document   : AgregarOrden
+    Created on : 1/03/2019, 08:47:51 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -15,26 +15,33 @@
         <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <link href="../Recursos/css/Estilos.css" rel="stylesheet" type="text/css"/>
         <script src="../Recursos/js/Validaciones.js" type="text/javascript"></script>
-        <title>Recursos&nbsp;Humanos</title>
+        <title>Compras</title>
     </head>
     <body onload="regreso();">
         <div class="row"><!-- INICIO DE NAVBAR -->
             <div class="container-fluid">
                 <header class="sticky-top">
                     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                        <a href="#" class="navbar-brand text-white">Recursos&nbsp;Humanos</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#rh_navbar" aria-controls="rh_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <a href="#" class="navbar-brand text-white">Compras</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#com_navbar" aria-controls="com_navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="rh_navbar">
+                        <div class="collapse navbar-collapse" id="con_navbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="empleado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empleado</a>
-                                    <div class="dropdown-menu bg-primary" aria-labelledby="empleado">
-                                        <a class="nav-link text-white" href="ContratarEmpleado.jsp">Contrataci&oacute;n</a>
-                                        <a class="nav-link text-white" href="DespedirEmpleado.jsp">Despido</a>
-                                        <a class="nav-link text-white" href="BuscarEmpleado.jsp">Buscar</a>
-                                        <a class="nav-link text-white" href="ModificarEmpleado.jsp">Modificar&nbsp;informaci&oacute;n</a>
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="proveedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="proveedor">
+                                        <a class="nav-link text-white" href="AgregarProveedor.jsp">Agregar&nbsp;proveedor</a>
+                                        <a class="nav-link text-white" href="ModificarProveedor.jsp">Modificar&nbsp;proveedor</a>
+                                        <a class="nav-link text-white" href="EliminarProveedor.jsp">Eliminar&nbsp;proveedor</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orden&nbsp;de&nbsp;compra</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="orden">
+                                        <a class="nav-link text-white" href="AgregarOrden.jsp">Agregar&nbsp;orden</a>
+                                        <a class="nav-link text-white" href="ModificarOrden.jsp">Modificar&nbsp;orden</a>
+                                        <a class="nav-link text-white" href="Devolucion.jsp">Devoluci&oacute;n</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -55,32 +62,40 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        ID&nbsp;del&nbsp;empleado
+                                        Proveedor
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="idEmpMod" name="idEmpMod" readonly="readonly">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Nombre
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreEmpMod" name="nombreEmpMod" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="provOrden" name="provOrden" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Contrase&ntilde;a
+                                        Producto
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="passEmpMod" name="passEmpMod" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="prodOrden" name="prodOrden" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cantidad
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" id="cantOrden" name="cantOrden" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Total
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" id="totalOrden" name="totalOrden" required="required" readonly="readonly">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Modificar">
+                                            <input type="submit" class="btn btn-success" value="Solicitar">
                                         </center>
                                     </td>
                                 </tr>

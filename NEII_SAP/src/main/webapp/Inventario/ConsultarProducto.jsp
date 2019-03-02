@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ModificarResultado
-    Created on : 3/02/2019, 11:00:52 AM
+    Document   : ConsultarProducto
+    Created on : 2/03/2019, 02:19:25 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -15,27 +15,24 @@
         <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <link href="../Recursos/css/Estilos.css" rel="stylesheet" type="text/css"/>
         <script src="../Recursos/js/Validaciones.js" type="text/javascript"></script>
-        <title>Recursos&nbsp;Humanos</title>
+        <title>Inventario</title>
     </head>
     <body onload="regreso();">
         <div class="row"><!-- INICIO DE NAVBAR -->
             <div class="container-fluid">
                 <header class="sticky-top">
                     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                        <a href="#" class="navbar-brand text-white">Recursos&nbsp;Humanos</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#rh_navbar" aria-controls="rh_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <a href="#" class="navbar-brand text-white">Inventario</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="rh_navbar">
+                        <div class="collapse navbar-collapse" id="inv_navbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="empleado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empleado</a>
-                                    <div class="dropdown-menu bg-primary" aria-labelledby="empleado">
-                                        <a class="nav-link text-white" href="ContratarEmpleado.jsp">Contrataci&oacute;n</a>
-                                        <a class="nav-link text-white" href="DespedirEmpleado.jsp">Despido</a>
-                                        <a class="nav-link text-white" href="BuscarEmpleado.jsp">Buscar</a>
-                                        <a class="nav-link text-white" href="ModificarEmpleado.jsp">Modificar&nbsp;informaci&oacute;n</a>
-                                    </div>
+                                    <a class="nav-link bg-primary text-white" href="ConsultarProducto.jsp">Consultar&nbsp;producto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link bg-primary text-white" href="ConsultarServicio.jsp">Consultar&nbsp;servicios</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="../CerrarSesion" class="nav-link bg-primary text-white">Cerrar&nbsp;sesi&oacute;n</a>
@@ -47,7 +44,7 @@
             </div>
         </div>
         <!-- FIN DE NAVBAR -->
-        <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
+        <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
                     <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
@@ -55,32 +52,29 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        ID&nbsp;del&nbsp;empleado
+                                        Producto
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="idEmpMod" name="idEmpMod" readonly="readonly">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Nombre
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreEmpMod" name="nombreEmpMod" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Contrase&ntilde;a
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="passEmpMod" name="passEmpMod" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="idProd" name="idProd" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Modificar">
+                                            <input type="submit" class="btn btn-success" value="Buscar">
+                                        </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <input type="submit" class="btn btn-success" value="Busqueda general">
                                         </center>
                                     </td>
                                 </tr>
