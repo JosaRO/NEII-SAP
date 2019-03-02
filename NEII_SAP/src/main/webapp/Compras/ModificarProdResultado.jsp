@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AgregarProveedor
-    Created on : 1/03/2019, 12:38:29 AM
+    Document   : ModificarProdResultado
+    Created on : 2/03/2019, 05:20:26 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -73,24 +73,40 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Nombre
+                                        ID&nbsp;producto
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreProv" name="nombreProv" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="idProdMod" name="idProdMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Tel&eacute;fono
+                                        Nombre
                                     </td>
                                     <td>
-                                        <input type="number" step="any" class="form-control form-control-sm" id="telProv" name="telProv" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="nombreProdMod" name="nombreProdMod" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Proveedor
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="provProdMod" name="provProdMod" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Precio
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" id="precioProdMod" name="precioProdMod" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Registrar">
+                                            <input type="submit" class="btn btn-success" value="Guardar">
                                         </center>
                                     </td>
                                 </tr>

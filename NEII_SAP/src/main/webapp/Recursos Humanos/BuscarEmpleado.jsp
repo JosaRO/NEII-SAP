@@ -71,6 +71,19 @@
                             </tbody>
                         </table>
                     </form>
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <input type="submit" class="btn btn-success" value="Busqueda general">
+                                        </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div><!-- FIN DE SECCION PRINCIPAL -->

@@ -33,7 +33,17 @@
                                     <div class="dropdown-menu bg-primary" aria-labelledby="proveedor">
                                         <a class="nav-link text-white" href="AgregarProveedor.jsp">Agregar&nbsp;proveedor</a>
                                         <a class="nav-link text-white" href="ModificarProveedor.jsp">Modificar&nbsp;proveedor</a>
+                                        <a class="nav-link text-white" href="BuscarProveedor.jsp">Buscar&nbsp;proveedor</a>
                                         <a class="nav-link text-white" href="EliminarProveedor.jsp">Eliminar&nbsp;proveedor</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="producto">
+                                        <a class="nav-link text-white" href="AgregarProducto.jsp">Agregar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="ModificarProducto.jsp">Modificar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Buscar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="EliminarProducto.jsp">Eliminar&nbsp;producto</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -41,6 +51,7 @@
                                     <div class="dropdown-menu bg-primary" aria-labelledby="orden">
                                         <a class="nav-link text-white" href="AgregarOrden.jsp">Agregar&nbsp;orden</a>
                                         <a class="nav-link text-white" href="ModificarOrden.jsp">Modificar&nbsp;orden</a>
+                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Buscar&nbsp;orden</a>
                                         <a class="nav-link text-white" href="Devolucion.jsp">Devoluci&oacute;n</a>
                                     </div>
                                 </li>

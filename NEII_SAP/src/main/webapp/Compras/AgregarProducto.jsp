@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AgregarProveedor
-    Created on : 1/03/2019, 12:38:29 AM
+    Document   : AgregarProducto
+    Created on : 2/03/2019, 05:10:11 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -76,15 +76,23 @@
                                         Nombre
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreProv" name="nombreProv" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="nombreProd" name="nombreProd" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Tel&eacute;fono
+                                        Proveedor
                                     </td>
                                     <td>
-                                        <input type="number" step="any" class="form-control form-control-sm" id="telProv" name="telProv" required="required">
+                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="provProd" name="provProd" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Precio
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" id="precioProd" name="precioProd" required="required">
                                     </td>
                                 </tr>
                                 <tr>

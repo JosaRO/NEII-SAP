@@ -1,10 +1,18 @@
 <%-- 
-    Document   : AgregarProveedor
-    Created on : 1/03/2019, 12:38:29 AM
+    Document   : BuscarProvResultado
+    Created on : 2/03/2019, 04:54:57 PM
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
+    if(lista.isEmpty()){
+        response.sendRedirect("ConsultarProducto.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +34,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#com_navbar" aria-controls="com_navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="con_navbar">
+                        <div class="collapse navbar-collapse" id="com_navbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="proveedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
@@ -65,38 +73,33 @@
             </div>
         </div>
         <!-- FIN DE NAVBAR -->
-        <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
+        <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Nombre
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreProv" name="nombreProv" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Tel&eacute;fono
-                                    </td>
-                                    <td>
-                                        <input type="number" step="any" class="form-control form-control-sm" id="telProv" name="telProv" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <center>
-                                            <input type="submit" class="btn btn-success" value="Registrar">
-                                        </center>
-                                    </td>
-                                </tr>
-                            </tbody>
+                    <scroll-container>
+                        <table align="center">
+                            <tr>
+                                <td>ID</td>
+                                <td>Nombre</td>
+                                <td>Tel&eacute;fono</td>
+                                <td>Status</td>
+                            </tr>
+                            <tr>
+                                <%
+                                    for(int i = 0 ; i < lista.size() ; i++){
+                                        if(i%4 == 0){
+                                            %>
+                            </tr>
+                            <tr>
+                                            <%
+                                        }%>
+                                        <td><%= lista.get(i) %></td>
+                                <%
+                                    }
+                                %>
+                            </tr>
                         </table>
-                    </form>
+                    </scroll-container>
                 </div>
             </div>
         </div><!-- FIN DE SECCION PRINCIPAL -->

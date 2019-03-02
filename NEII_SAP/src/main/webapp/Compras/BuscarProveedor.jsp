@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AgregarProveedor
-    Created on : 1/03/2019, 12:38:29 AM
+    Document   : BuscarProveedor
+    Created on : 2/03/2019, 04:39:34 PM
     Author     : Windows 10 Pro
 --%>
 
@@ -65,7 +65,7 @@
             </div>
         </div>
         <!-- FIN DE NAVBAR -->
-        <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
+        <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
                     <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
@@ -73,24 +73,29 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Nombre
+                                        Proveedor
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreProv" name="nombreProv" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Tel&eacute;fono
-                                    </td>
-                                    <td>
-                                        <input type="number" step="any" class="form-control form-control-sm" id="telProv" name="telProv" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="idProvCom" name="idProvCom" required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Registrar">
+                                            <input type="submit" class="btn btn-success" value="Buscar">
+                                        </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <input type="submit" class="btn btn-success" value="Busqueda general">
                                         </center>
                                     </td>
                                 </tr>
