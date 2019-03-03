@@ -4,14 +4,20 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="neii.sap.conexion.Conexion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession sesion = request.getSession(true);
-    ArrayList lista = (ArrayList) sesion.getAttribute("transaccion");
-    if(lista.isEmpty()){
-        response.sendRedirect("con_index.jsp");
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
     }
+    Conexion c = new Conexion();
+    ArrayList lista = c.consulta("movimiento.id,empleado.nombre,movimiento.cantidad,movimiento.fecha", "movimiento,empleado",
+            "movimiento.id is not null AND movimiento.responsable = empleado.id", 4);
 %>
 <!DOCTYPE html>
 <html>

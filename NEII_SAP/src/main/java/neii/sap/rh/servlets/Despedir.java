@@ -1,8 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package neii.sap.rh.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -16,8 +22,8 @@ import neii.sap.conexion.Conexion;
  *
  * @author Windows 10 Pro
  */
-@WebServlet(name = "Contratar", urlPatterns = {"/Contratar"})
-public class Contratar extends HttpServlet {
+@WebServlet(name = "Despedir", urlPatterns = {"/Despedir"})
+public class Despedir extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +38,22 @@ public class Contratar extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreEmp");
-        String pass = request.getParameter("passEmp");
-        String area = request.getParameter("areaEmp");
+        String empleado = request.getParameter("idEmpDes");
         Conexion c = new Conexion();
-        c.insertar("nombre,contrasena,estado,area", "empleado", "'"+nombre+"','"+pass+"',1,"+area);
+        ArrayList lista = c.consulta("id", "empleado", "id = "+empleado, 1);
         
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Registro completado');");
-        out.println("location='Recursos Humanos/ContratarEmpleado.jsp';");
-        out.println("</script>");
+        if(!lista.isEmpty()){
+            c.actualizar("estado = 2", "empleado", "id = "+empleado);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Operación completada');");
+            out.println("location='Recursos Humanos/DespedirEmpleado.jsp';");
+            out.println("</script>");
+        }else{
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('El ID no existe');");
+            out.println("location='Recursos Humanos/DespedirEmpleado.jsp';");
+            out.println("</script>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,9 +71,9 @@ public class Contratar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Despedir.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Despedir.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,4 +1,9 @@
-package neii.sap.rh.servlets;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package neii.sap.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,14 +15,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import neii.sap.conexion.Conexion;
 
 /**
  *
  * @author Windows 10 Pro
  */
-@WebServlet(name = "Contratar", urlPatterns = {"/Contratar"})
-public class Contratar extends HttpServlet {
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/CerrarSesion"})
+public class CerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,20 +37,32 @@ public class Contratar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreEmp");
-        String pass = request.getParameter("passEmp");
-        String area = request.getParameter("areaEmp");
-        Conexion c = new Conexion();
-        c.insertar("nombre,contrasena,estado,area", "empleado", "'"+nombre+"','"+pass+"',1,"+area);
-        
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Registro completado');");
-        out.println("location='Recursos Humanos/ContratarEmpleado.jsp';");
-        out.println("</script>");
+        HttpSession sesion = request.getSession(true);
+        response.sendRedirect("index.jsp");
+        sesion.invalidate();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CerrarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CerrarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -59,9 +77,9 @@ public class Contratar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CerrarSesion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CerrarSesion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

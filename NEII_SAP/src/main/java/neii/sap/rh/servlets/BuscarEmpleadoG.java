@@ -1,8 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package neii.sap.rh.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -10,14 +16,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import neii.sap.conexion.Conexion;
 
 /**
  *
  * @author Windows 10 Pro
  */
-@WebServlet(name = "Contratar", urlPatterns = {"/Contratar"})
-public class Contratar extends HttpServlet {
+@WebServlet(name = "BuscarEmpleadoG", urlPatterns = {"/BuscarEmpleadoG"})
+public class BuscarEmpleadoG extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +39,22 @@ public class Contratar extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreEmp");
-        String pass = request.getParameter("passEmp");
-        String area = request.getParameter("areaEmp");
+        HttpSession sesion = request.getSession(true);
+        String empleado = request.getParameter("idEmpBuscar");
         Conexion c = new Conexion();
-        c.insertar("nombre,contrasena,estado,area", "empleado", "'"+nombre+"','"+pass+"',1,"+area);
+        ArrayList lista = c.consulta("empleado.id,empleado.nombre,status.estado,empleado.contrasena,area.descripcion",
+                "empleado,area,status", "empleado.id is not null AND empleado.area = area.id AND status.id = empleado.estado",
+                5);
         
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Registro completado');");
-        out.println("location='Recursos Humanos/ContratarEmpleado.jsp';");
-        out.println("</script>");
+        if(!lista.isEmpty()){
+            sesion.setAttribute("empleado", lista);
+            response.sendRedirect("Recursos Humanos/BuscarResultado.jsp");
+        }else{
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('El ID no existe');");
+            out.println("location='Recursos Humanos/BuscarEmpleado.jsp';");
+            out.println("</script>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,9 +72,9 @@ public class Contratar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarEmpleadoG.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Contratar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarEmpleadoG.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -8,9 +8,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);
-    ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
-    if(lista.isEmpty()){
-        response.sendRedirect("ConsultarProducto.jsp");
+    ArrayList lista = (ArrayList) sesion.getAttribute("producto");
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }else{
+            if(lista.isEmpty()){
+                response.sendRedirect("ConsultarProducto.jsp");
+            }
+        }
     }
 %>
 <!DOCTYPE html>

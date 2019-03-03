@@ -4,7 +4,20 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.LinkedList"%>
+<%@page import="neii.sap.clases.Productos"%>
+<%@page import="neii.sap.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
+    Conexion c = new Conexion();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +60,7 @@
         <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                    <form class="form-control" method="POST" autocomplete="off" action="../ConsultarProducto">
                         <table>
                             <tbody>
                                 <tr>
@@ -55,7 +68,17 @@
                                         Producto
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="idProd" name="idProd" required="required">
+                                        <select id='prodBuscar' name="prodBuscar" class='form-control form-control-sm' required="required">
+                                            <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
+                                            <%
+                                                LinkedList<Productos> l = c.servicio();
+                                                for (int i=0;i<l.size();i++)
+                                                {                                                                         
+                                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
+
+                                                }
+                                            %>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -68,7 +91,7 @@
                             </tbody>
                         </table>
                     </form>
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                    <form class="form-control" method="POST" autocomplete="off" action="../ConsultarProductoG">
                         <table>
                             <tbody>
                                 <tr>

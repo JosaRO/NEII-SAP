@@ -4,7 +4,20 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="neii.sap.conexion.Conexion"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="neii.sap.clases.Area"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
+    Conexion c = new Conexion();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,7 +63,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="../Contratar">
                         <table>
                             <tbody>
                                 <tr>
@@ -67,6 +80,24 @@
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm" maxlength="20" id="passEmp" name="passEmp" required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &Aacute;rea
+                                    </td>
+                                    <td>
+                                        <select id='areaEmp' name="areaEmp" class='form-control form-control-sm' required="required">
+                                            <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
+                                            <%
+                                                LinkedList<Area> l = c.area();
+                                                for (int i=0;i<l.size();i++)
+                                                {                                                                         
+                                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
+
+                                                }
+                                            %>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>

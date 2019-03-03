@@ -7,10 +7,17 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
     HttpSession sesion = request.getSession(true);
     ArrayList lista = (ArrayList) sesion.getAttribute("transaccion");
     if(lista.isEmpty()){
-        response.sendRedirect("BuscarTranResultado.jsp");
+        response.sendRedirect("BuscarTransaccion.jsp");
     }
 %>
 <!DOCTYPE html>

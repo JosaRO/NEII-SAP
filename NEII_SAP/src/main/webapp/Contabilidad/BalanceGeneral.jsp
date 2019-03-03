@@ -4,7 +4,22 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="neii.sap.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
+    Conexion c = new Conexion();
+    ArrayList cargos = c.consulta("count(*),sum(cantidad)", "movimiento", "cantidad < 0", 2);
+    ArrayList abonos = c.consulta("count(*),sum(cantidad)", "movimiento", "cantidad >= 0", 2);;
+    ArrayList total = c.consulta("count(*),sum(cantidad)", "movimiento", "cantidad is not null", 2);;
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,6 +68,7 @@
                         <table>
                             <tbody>
                                 <tr>
+                                    <td></td>
                                     <td>
                                         N&uacute;mero&nbsp;de&nbsp;movimientos
                                     </td>
@@ -62,16 +78,18 @@
                                 </tr>
                                 <tr>
                                     <td>Cargos</td>
-                                    <td></td>
+                                    <td><%= cargos.get(0) %></td>
+                                    <td><%= cargos.get(1) %></td>
                                 </tr>
                                 <tr>
                                     <td>Abonos</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><%= abonos.get(0) %></td>
+                                    <td><%= abonos.get(1) %></td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td></td>
+                                    <td><%= total.get(0) %></td>
+                                    <td><%= total.get(1) %></td>
                                 </tr>
                             </tbody>
                         </table>

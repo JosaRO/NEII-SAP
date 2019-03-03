@@ -7,10 +7,18 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession sesion = request.getSession(true);
-    ArrayList lista = (ArrayList) sesion.getAttribute("empleados");
-    if(lista.isEmpty()){
-        response.sendRedirect("BuscarEmpleado.jsp");
+    ArrayList lista = new ArrayList();
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }else{
+            lista = (ArrayList) request.getSession().getAttribute("empleado");
+            if(lista.isEmpty()){
+                response.sendRedirect("BuscarEmpleado.jsp");
+            }
+        }
     }
 %>
 <!DOCTYPE html>
@@ -65,11 +73,12 @@
                                 <td>Nombre</td>
                                 <td>Status</td>
                                 <td>Contrase&ntilde;a</td>
+                                <td>&Aacute;rea</td>
                             </tr>
                             <tr>
                                 <%
                                     for(int i = 0 ; i < lista.size() ; i++){
-                                        if(i%4 == 0){
+                                        if(i%5 == 0){
                                             %>
                             </tr>
                             <tr>

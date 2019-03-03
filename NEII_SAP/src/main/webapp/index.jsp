@@ -1,3 +1,4 @@
+<% request.getSession().invalidate(); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +14,7 @@
     <body onload="regreso();">
         <div class="div-centrado">
             <div class="form-centrado">
-                <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                <form class="form-control" method="POST" autocomplete="off" action="IniciarSesion">
                     <table>
                         <tbody>
                             <tr>
@@ -26,14 +27,14 @@
                             <tr>
                                 <td>
                                     <center>
-                                        <input type="text" class="form-control-lg" placeholder="USUARIO" required="required">
+                                        <input type="number" step="any" id="usuario" name="usuario" class="form-control-lg" placeholder="USUARIO" required="required">
                                     </center>
                                 </td>
                             </tr>    
                             <tr>
                                 <td>
                                     <center>
-                                        <input type="password" class="form-control-lg" placeholder="CONTRASEÑA" required="required">
+                                        <input type="password" id="pass" name="pass" class="form-control-lg" placeholder="CONTRASEÑA" required="required">
                                     </center>
                                 </td>
                             </tr>
