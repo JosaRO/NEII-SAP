@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Properties;
 import neii.sap.clases.Area;
+import neii.sap.clases.Cliente;
 import neii.sap.clases.Productos;
 import neii.sap.clases.Servicios;
 
@@ -102,7 +103,7 @@ public class Conexion {
         LinkedList<Servicios> lista = new LinkedList<>();
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM area");
+        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM servicio");
             while (rs.next()) {
                 Servicios a = new Servicios();
                 a.setId(rs.getInt("id"));             
@@ -116,9 +117,23 @@ public class Conexion {
         LinkedList<Productos> lista = new LinkedList<>();
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM producto");
+        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM producto WHERE disponibles != 0");
             while (rs.next()) {
                 Productos a = new Productos();
+                a.setId(rs.getInt("id"));             
+                a.setNombre(rs.getString("nombre"));
+                lista.add(a);
+            }                    
+        return lista;
+    }
+    
+    public LinkedList cliente() throws SQLException{
+        LinkedList<Cliente> lista = new LinkedList<>();
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM cliente");
+            while (rs.next()) {
+                Cliente a = new Cliente();
                 a.setId(rs.getInt("id"));             
                 a.setNombre(rs.getString("nombre"));                
                 lista.add(a);
