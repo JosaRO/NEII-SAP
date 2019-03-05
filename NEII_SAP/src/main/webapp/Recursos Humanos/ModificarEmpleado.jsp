@@ -59,7 +59,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" action="../BuscarEmpleadoM">
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="return buscarEmpleadoMod();" action="../BuscarEmpleadoM">
                         <table>
                             <tbody>
                                 <tr>

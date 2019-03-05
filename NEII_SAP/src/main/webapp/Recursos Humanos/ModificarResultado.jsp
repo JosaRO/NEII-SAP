@@ -70,7 +70,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="../ModificarEmpleado">
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="return modificarEmpleado();" action="../ModificarEmpleado">
                         <table>
                             <tbody>
                                 <tr>

@@ -1,14 +1,9 @@
 <%-- 
-    Document   : RegistrarVenta
-    Created on : 3/03/2019, 06:19:06 PM
+    Document   : RegistrarCliente
+    Created on : 4/03/2019, 09:28:51 AM
     Author     : Windows 10 Pro
 --%>
 
-<%@page import="neii.sap.clases.Productos"%>
-<%@page import="java.util.LinkedList"%>
-<%@page import="neii.sap.clases.Cliente"%>
-<%@page import="neii.sap.clases.Cliente"%>
-<%@page import="neii.sap.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if(request.getSession().getAttribute("usuario") == null){
@@ -18,7 +13,6 @@
             response.sendRedirect("../errorSesion.jsp");
         }
     }
-    Conexion c = new Conexion();
 %>
 <!DOCTYPE html>
 <html>
@@ -74,49 +68,55 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="return registrarVenta();" action="../RegistrarVenta">
+                    <form class="form-control" method="POST" autocomplete="off" action="../RegistrarCliente">
                         <table>
                             <tbody>
                                 <tr>
                                     <td>
-                                        Producto
+                                        Nombre
                                     </td>
                                     <td>
-                                        <select id='prodVenta' name="prodVenta" class='form-control form-control-sm' required="required">
-                                            <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
-                                            <%
-                                                LinkedList<Productos> l = c.producto();
-                                                for (int i=0;i<l.size();i++)
-                                                {                                                                         
-                                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
-                                                }
-                                            %>
-                                        </select>
+                                        <input type="text" id="nombreCli" name="nombreCli" class='form-control form-control-sm' required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Cantidad
+                                        Direcci&oacute;n
                                     </td>
                                     <td>
-                                        <input type="number" step="any" id="cantVenta" name="cantVenta" class='form-control form-control-sm' required="required">
+                                        <input type="text" id="dirCli" name="dirCli" class='form-control form-control-sm' required="required">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Cliente
+                                        Rol&nbsp;de&nbsp;la&nbsp;empresa
                                     </td>
                                     <td>
-                                        <select id='clienteVenta' name="clienteVenta" class='form-control form-control-sm' required="required">
-                                            <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
-                                            <%
-                                                LinkedList<Cliente> li = c.cliente();
-                                                for (int i=0;i<li.size();i++)
-                                                {                                                                         
-                                                   out.println("<option value='"+li.get(i).getId()+"'>"+li.get(i).getNombre()+"</td>");
-                                                }
-                                            %>
-                                        </select>
+                                        <input type="text" id="rolCli" name="rolCli" class='form-control form-control-sm' required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Puesto
+                                    </td>
+                                    <td>
+                                        <input type="text" id="puestoCli" name="puestoCli" class='form-control form-control-sm' required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Correo
+                                    </td>
+                                    <td>
+                                        <input type="email" id="correoCli" name="correoCli" class='form-control form-control-sm' required="required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tel&eacute;fono
+                                    </td>
+                                    <td>
+                                        <input type="number" step="any" id="telCli" name="telCli" class='form-control form-control-sm' required="required">
                                     </td>
                                 </tr>
                                 <tr>

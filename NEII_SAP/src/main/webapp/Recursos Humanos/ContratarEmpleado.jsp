@@ -63,7 +63,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="../Contratar">
+                    <form class="form-control" method="POST" autocomplete="off" onsubmit="return contratarEmpleado();" action="../Contratar">
                         <table>
                             <tbody>
                                 <tr>
