@@ -45,7 +45,7 @@ public class IniciarSesion extends HttpServlet {
         ArrayList lista;
         Conexion c = new Conexion();
         
-        lista = c.consulta("area", "empleado", "id = "+usuario+" AND contrasenia = '"+pass+"'", 1);
+        lista = c.consulta("area", "empleado", "id = "+usuario+" AND contrasena = '"+pass+"'", 1);
         
         if(!lista.isEmpty()){
             sesion.setAttribute("usuario", usuario);
@@ -55,16 +55,16 @@ public class IniciarSesion extends HttpServlet {
                     response.sendRedirect("Recursos Humanos/rh_index.jsp");
                     break;
                 case "2":
-                    response.sendRedirect("Inventario/inv_index.jsp");
-                    break;
-                case "3":
-                    response.sendRedirect("Contabilidad/con_index.jsp");
-                    break;
-                case "4":
                     response.sendRedirect("Compras/com_index.jsp");
                     break;
-                case "5":
+                case "3":
+                    response.sendRedirect("Inventario/inv_index.jsp");
+                    break;
+                case "4":
                     response.sendRedirect("Ventas/ven_index.jsp");
+                    break;
+                case "5":
+                    response.sendRedirect("Contabilidad/con_index.jsp");
                     break;
                 case "6":
                     response.sendRedirect("Gerencia/ger_index.jsp");

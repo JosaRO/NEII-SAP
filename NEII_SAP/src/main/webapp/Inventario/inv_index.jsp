@@ -9,7 +9,7 @@
     if(request.getSession().getAttribute("usuario") == null){
         response.sendRedirect("../errorSesion.jsp");
     }else{
-        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+        if(!request.getSession().getAttribute("area").equals("3")&&!request.getSession().getAttribute("area").equals("6")){
             response.sendRedirect("../errorSesion.jsp");
         }
     }
