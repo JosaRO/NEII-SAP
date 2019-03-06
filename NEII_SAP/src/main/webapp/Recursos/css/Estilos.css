@@ -17,3 +17,19 @@
 .form-centrado{
     display: flex;
 }
+
+.div-centrado-inf{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div-centrado-sup{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

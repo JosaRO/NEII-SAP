@@ -17,7 +17,7 @@
             response.sendRedirect("../errorSesion.jsp");
         }
     }
-    Conexion c = new Conexion();
+    Conexion c = new Conexion(); 
 %>
 <!DOCTYPE html>
 <html>
@@ -88,7 +88,7 @@
                                                 for (int i=0;i<l.size();i++)
                                                 {                                                                         
                                                    out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
-                                                }
+                                                } 
                                             %>
                                         </select>
                                     </td>
@@ -105,7 +105,7 @@
                                                 for (int i=0;i<li.size();i++)
                                                 {                                                                         
                                                    out.println("<option value='"+li.get(i).getId()+"'>"+li.get(i).getNombre()+"</td>");
-                                                }
+                                                } 
                                             %>
                                         </select>
                                     </td>

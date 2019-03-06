@@ -16,7 +16,7 @@
             response.sendRedirect("../errorSesion.jsp");
         }
     }
-    Conexion c = new Conexion();
+    Conexion c = new Conexion(); 
 %>
 <!DOCTYPE html>
 <html>
@@ -95,7 +95,7 @@
                                                 {                                                                         
                                                    out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
 
-                                                }
+                                                } 
                                             %>
                                         </select>
                                     </td>

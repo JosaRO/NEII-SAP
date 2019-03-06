@@ -12,7 +12,7 @@
         if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
             response.sendRedirect("../errorSesion.jsp");
         }
-    }
+    } 
 %>
 <!DOCTYPE html>
 <html>

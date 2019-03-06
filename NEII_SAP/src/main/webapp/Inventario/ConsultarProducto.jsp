@@ -59,7 +59,7 @@
         <!-- FIN DE NAVBAR -->
         <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
-                <div class="form-centrado">
+                <div class="form-centrado-sup">
                     <form class="form-control" method="POST" autocomplete="off" action="../ConsultarProducto">
                         <table>
                             <tbody>
@@ -76,7 +76,7 @@
                                                 {                                                                         
                                                    out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
 
-                                                }
+                                                } 
                                             %>
                                         </select>
                                     </td>
@@ -91,6 +91,8 @@
                             </tbody>
                         </table>
                     </form>
+                </div>
+                <div class="form-centrado-inf">
                     <form class="form-control" method="POST" autocomplete="off" action="../ConsultarProductoG">
                         <table>
                             <tbody>
