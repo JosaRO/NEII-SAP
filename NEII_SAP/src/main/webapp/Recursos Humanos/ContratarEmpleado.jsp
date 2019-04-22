@@ -4,6 +4,7 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="neii.sap.conexion.Conexion"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="neii.sap.clases.Area"%>
@@ -16,7 +17,8 @@
             response.sendRedirect("../errorSesion.jsp");
         }
     }
-    Conexion c = new Conexion(); 
+    Conexion c = new Conexion();
+    ArrayList lista = c.consulta("id,descripcion", "area", "id is not null", 2);
 %>
 <!DOCTYPE html>
 <html>
@@ -90,12 +92,12 @@
                                         <select id='areaEmp' name="areaEmp" class='form-control form-control-sm' required="required">
                                             <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
                                             <%
-                                                LinkedList<Area> l = c.area();
-                                                for (int i=0;i<l.size();i++)
-                                                {                                                                         
-                                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
-
-                                                } 
+                                                int i = 0;
+                                                while(i < lista.size())
+                                                {
+                                                   out.println("<option value='"+lista.get(i)+"'>"+lista.get(i+1)+"</option>");
+                                                   i = i + 2;
+                                                }
                                             %>
                                         </select>
                                     </td>

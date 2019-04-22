@@ -4,7 +4,19 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
+    ArrayList lista = (ArrayList) sesion.getAttribute("provMod");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,27 +44,21 @@
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="proveedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="proveedor">
                                         <a class="nav-link text-white" href="AgregarProveedor.jsp">Agregar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="ModificarProveedor.jsp">Modificar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="BuscarProveedor.jsp">Buscar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="EliminarProveedor.jsp">Eliminar&nbsp;proveedor</a>
+                                            <a class="nav-link text-white" href="BuscarProveedor.jsp">Gestionar&nbsp;proveedor</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="producto">
                                         <a class="nav-link text-white" href="AgregarProducto.jsp">Agregar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="ModificarProducto.jsp">Modificar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Buscar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="EliminarProducto.jsp">Eliminar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Gestionar&nbsp;producto</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orden&nbsp;de&nbsp;compra</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="orden">
                                         <a class="nav-link text-white" href="AgregarOrden.jsp">Agregar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="ModificarOrden.jsp">Modificar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Buscar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="Devolucion.jsp">Devoluci&oacute;n</a>
+                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Gestionar&nbsp;orden</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -68,7 +74,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                    <form class="form-control" method="POST" autocomplete="off" action="../GuardarModProv">
                         <table>
                             <tbody>
                                 <tr>
@@ -76,7 +82,7 @@
                                         ID&nbsp;del&nbsp;proveedor
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="idProvMod" name="idProvMod" readonly="readonly">
+                                        <input type="text" class="form-control form-control-sm" id="idProvMod" name="idProvMod" value="<%= lista.get(0) %>" readonly="readonly">
                                     </td>
                                 </tr>
                                 <tr>
@@ -84,7 +90,7 @@
                                         Nombre
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="nombreProvMod" name="nombreProvMod" required="required">
+                                        <input type="text" class="form-control form-control-sm" id="nombreProvMod" name="nombreProvMod" value="<%= lista.get(1) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,7 +98,7 @@
                                         Tel&eacute;fono
                                     </td>
                                     <td>
-                                        <input type="number" step="any" class="form-control form-control-sm" id="telProvMod" name="telProvMod" required="required">
+                                        <input type="number" step="any" class="form-control form-control-sm" id="telProvMod" name="telProvMod" value="<%= lista.get(2) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>

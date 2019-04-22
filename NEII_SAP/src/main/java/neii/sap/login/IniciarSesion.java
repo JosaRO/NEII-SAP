@@ -6,7 +6,6 @@
 package neii.sap.login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -38,7 +37,6 @@ public class IniciarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         String usuario = request.getParameter("usuario");
         String pass = request.getParameter("pass");
         HttpSession sesion = request.getSession(true);
@@ -47,7 +45,7 @@ public class IniciarSesion extends HttpServlet {
         
         lista = c.consulta("area", "empleado", "id = "+usuario+" AND contrasena = '"+pass+"'", 1);
         
-        if(!lista.isEmpty()){
+        if((!lista.isEmpty())&&(sesion.getAttribute("usuario")==null)){
             sesion.setAttribute("usuario", usuario);
             sesion.setAttribute("area", lista.get(0).toString());
             switch(lista.get(0).toString()){
@@ -58,29 +56,20 @@ public class IniciarSesion extends HttpServlet {
                     response.sendRedirect("Compras/com_index.jsp");
                     break;
                 case "3":
-                    response.sendRedirect("Inventario/inv_index.jsp");
-                    break;
-                case "4":
                     response.sendRedirect("Ventas/ven_index.jsp");
                     break;
-                case "5":
+                case "4":
                     response.sendRedirect("Contabilidad/con_index.jsp");
                     break;
-                case "6":
+                case "5":
                     response.sendRedirect("Gerencia/ger_index.jsp");
                     break;
                 default:
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Usuario o contraseña incorrectos');");
-                    out.println("location='index.jsp';");
-                    out.println("</script>");
+                    response.getWriter().write("1");
                     break;
             }
         }else{
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Usuario o contraseña incorrectos');");
-            out.println("location='index.jsp';");
-            out.println("</script>");
+            response.getWriter().write("1");
         }
     }
 

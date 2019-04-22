@@ -4,7 +4,21 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="neii.sap.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(request.getSession().getAttribute("usuario") == null){
+        response.sendRedirect("../errorSesion.jsp");
+    }else{
+        if(!request.getSession().getAttribute("area").equals("1")&&!request.getSession().getAttribute("area").equals("6")){
+            response.sendRedirect("../errorSesion.jsp");
+        }
+    }
+    Conexion c = new Conexion();
+    ArrayList lista = c.consulta("producto.nombre,producto.precio,producto.id", "producto",
+            "producto.id is not null LIMIT 50", 3);
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,27 +46,21 @@
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="proveedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="proveedor">
                                         <a class="nav-link text-white" href="AgregarProveedor.jsp">Agregar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="ModificarProveedor.jsp">Modificar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="BuscarProveedor.jsp">Buscar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="EliminarProveedor.jsp">Eliminar&nbsp;proveedor</a>
+                                            <a class="nav-link text-white" href="BuscarProveedor.jsp">Gestionar&nbsp;proveedor</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="producto">
                                         <a class="nav-link text-white" href="AgregarProducto.jsp">Agregar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="ModificarProducto.jsp">Modificar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Buscar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="EliminarProducto.jsp">Eliminar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Gestionar&nbsp;producto</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orden&nbsp;de&nbsp;compra</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="orden">
                                         <a class="nav-link text-white" href="AgregarOrden.jsp">Agregar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="ModificarOrden.jsp">Modificar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Buscar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="Devolucion.jsp">Devoluci&oacute;n</a>
+                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Gestionar&nbsp;orden</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -66,46 +74,55 @@
         </div>
         <!-- FIN DE NAVBAR -->
         <div class="container"><!-- INICIO DE SECCION PRINCIPAL -->
-            <div class="div-interno-centrado">
-                <div class="form-centrado-sup">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
-                        <table>
-                            <tbody>
-                                <tr>
+                <form class="form-control" method="POST" autocomplete="off" action="../BuscarProducto">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <input class="form-control form-control-sm" type="number" step="any" id="prodBuscada" name="prodBuscada" autocomplete="off">
+                            </td>
+                            <td>
+                                <input class="btn btn-success" type="submit" id="buscarProd" name="buscarProd" value="Buscar">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            <scroll-container>
+                <table class="tabla">
+                    <tr>
+                        <td style="text-align: center;"><b>Producto</b></td>
+                        <td style="text-align: center;"><b>Precio</b></td>
+                        <td style="text-align: center;"><b>ID</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <%
+                            for(int i = 0 ; i <= lista.size() ; i++){
+                                if(i%3 == 0 && i != 0){
+                        %>
+                                    <td></td>
                                     <td>
-                                        ID&nbsp;del&nbsp;producto
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="idProdCom" name="idProdCom" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
                                         <center>
-                                            <input type="submit" class="btn btn-success" value="Buscar">
+                                            <form autocomplete="off" method="POST" action="../ModificarProducto">
+                                                <input type="text" id="idProdModB" name="idProdModB" value="<%= lista.get(i-1) %>" hidden="true">
+                                                <input type="submit" class="btn btn-success" value="Modificar">
+                                            </form>
                                         </center>
                                     </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-                <div class="form-centrado-inf">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td colspan="2">
-                                        <center>
-                                            <input type="submit" class="btn btn-success" value="Busqueda general">
-                                        </center>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-            </div>
+                    </tr>
+                    <tr>
+                        <%
+                                }
+                                if(i < lista.size()){
+                        %>
+                                <td style="text-align: center;"><%= lista.get(i) %></td>
+                        <%
+                                }
+                            }
+                        %>
+                    </tr>
+                </table>
+            </scroll-container>
         </div><!-- FIN DE SECCION PRINCIPAL -->
     </body>
 </html>

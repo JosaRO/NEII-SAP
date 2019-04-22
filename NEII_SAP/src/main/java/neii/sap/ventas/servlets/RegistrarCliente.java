@@ -42,7 +42,7 @@ public class RegistrarCliente extends HttpServlet {
         String nombre = request.getParameter("nombreCli");
         String direccion = request.getParameter("dirCli");
         String rol = request.getParameter("rolCli");
-        String puesto = request.getParameter("puestoCi");
+        String puesto = request.getParameter("puestoCli");
         String correo = request.getParameter("correoCli");
         String telefono = request.getParameter("telCli");
         Conexion c = new Conexion();

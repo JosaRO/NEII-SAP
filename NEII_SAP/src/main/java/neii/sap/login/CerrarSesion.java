@@ -6,7 +6,6 @@
 package neii.sap.login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import neii.sap.conexion.Conexion;
 
 /**
  *
@@ -38,6 +36,8 @@ public class CerrarSesion extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession(true);
+        request.getSession().removeAttribute("usuario");
+        request.getSession().removeAttribute("area");
         response.sendRedirect("index.jsp");
         sesion.invalidate();
     }

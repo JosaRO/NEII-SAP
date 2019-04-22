@@ -4,10 +4,7 @@
     Author     : Windows 10 Pro
 --%>
 
-<%@page import="neii.sap.clases.Productos"%>
-<%@page import="java.util.LinkedList"%>
-<%@page import="neii.sap.clases.Cliente"%>
-<%@page import="neii.sap.clases.Cliente"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="neii.sap.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -19,6 +16,8 @@
         }
     }
     Conexion c = new Conexion();
+    ArrayList cliente = c.consulta("id,nombre", "cliente", "id is not null LIMIT 20", 2);
+    ArrayList servicio = c.consulta("id,nombre", "producto", "id is not null LIMIT 20", 2);
 %>
 <!DOCTYPE html>
 <html>
@@ -47,18 +46,28 @@
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="cliente" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="cliente">
                                         <a class="nav-link text-white" href="RegistrarCliente.jsp">Registrar&nbsp;cliente</a>
+                                        <a class="nav-link text-white" href="GestionarCliente.jsp">Gestionar&nbsp;cliente</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="venta" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Venta</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="venta">
                                         <a class="nav-link text-white" href="RegistrarVenta.jsp">Registrar&nbsp;venta</a>
+                                        <a class="nav-link text-white" href="GestionarVenta.jsp">Gestionar&nbsp;venta</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="contratacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contrataci&oacute;n</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="contratacion">
                                         <a class="nav-link text-white" href="RegistrarContratacion.jsp">Registrar&nbsp;contrataci&oacute;n</a>
+                                        <a class="nav-link text-white" href="GestionarContratacion.jsp">Gestionar&nbsp;contrataci&oacute;n</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="contratacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promociones</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="contratacion">
+                                        <a class="nav-link text-white" href="RegistrarPromocion.jsp">Registrar&nbsp;promoci&oacute;n</a>
+                                        <a class="nav-link text-white" href="GestionarPromocion.jsp">Gestionar&nbsp;promoci&oacute;n</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -85,10 +94,11 @@
                                         <select id='prodVenta' name="prodVenta" class='form-control form-control-sm' required="required">
                                             <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
                                             <%
-                                                LinkedList<Productos> l = c.producto();
-                                                for (int i=0;i<l.size();i++)
-                                                {                                                                         
-                                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
+                                                int i = 0;
+                                                while(i < servicio.size())
+                                                {
+                                                   out.println("<option value='"+servicio.get(i)+"'>"+servicio.get(i+1)+"</option>");
+                                                   i = i + 2;
                                                 }
                                             %>
                                         </select>
@@ -110,10 +120,11 @@
                                         <select id='clienteVenta' name="clienteVenta" class='form-control form-control-sm' required="required">
                                             <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
                                             <%
-                                                LinkedList<Cliente> li = c.cliente();
-                                                for (int i=0;i<li.size();i++)
-                                                {                                                                         
-                                                   out.println("<option value='"+li.get(i).getId()+"'>"+li.get(i).getNombre()+"</td>");
+                                                int x = 0;
+                                                while(x < cliente.size())
+                                                {
+                                                   out.println("<option value='"+cliente.get(x)+"'>"+cliente.get(x+1)+"</option>");
+                                                   x = x + 2;
                                                 }
                                             %>
                                         </select>

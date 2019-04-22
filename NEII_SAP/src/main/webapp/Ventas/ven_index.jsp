@@ -41,18 +41,28 @@
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="cliente" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="cliente">
                                         <a class="nav-link text-white" href="RegistrarCliente.jsp">Registrar&nbsp;cliente</a>
+                                        <a class="nav-link text-white" href="GestionarCliente.jsp">Gestionar&nbsp;cliente</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="venta" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Venta</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="venta">
                                         <a class="nav-link text-white" href="RegistrarVenta.jsp">Registrar&nbsp;venta</a>
+                                        <a class="nav-link text-white" href="GestionarVenta.jsp">Gestionar&nbsp;venta</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="contratacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contrataci&oacute;n</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="contratacion">
                                         <a class="nav-link text-white" href="RegistrarContratacion.jsp">Registrar&nbsp;contrataci&oacute;n</a>
+                                        <a class="nav-link text-white" href="GestionarContratacion.jsp">Gestionar&nbsp;contrataci&oacute;n</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="contratacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promociones</a>
+                                    <div class="dropdown-menu bg-primary" aria-labelledby="contratacion">
+                                        <a class="nav-link text-white" href="RegistrarPromocion.jsp">Registrar&nbsp;promoci&oacute;n</a>
+                                        <a class="nav-link text-white" href="GestionarPromocion.jsp">Gestionar&nbsp;promoci&oacute;n</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">

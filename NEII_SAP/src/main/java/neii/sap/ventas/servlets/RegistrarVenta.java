@@ -50,7 +50,7 @@ public class RegistrarVenta extends HttpServlet {
         Double precio = Double.parseDouble(c.consulta("precio", "producto", "id = "+producto, 1).toString());
         Double total = Double.parseDouble(cantidad) * precio;
         
-        c.insertar("producto,cantidad,total,fecha,cliente", "venta",
+        c.insertar("producto,cantidad,total,fecha,cliente", "venta_producto",
                 producto+","+cantidad+","+total+",'"+formato.format(fecha)+"',"+cliente);
         
         out.println("<script type=\"text/javascript\">");

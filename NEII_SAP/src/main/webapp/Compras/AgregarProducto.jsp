@@ -4,6 +4,13 @@
     Author     : Windows 10 Pro
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="neii.sap.conexion.Conexion"%>
+<%@page import="java.util.LinkedList"%>
+<%
+    Conexion c = new Conexion();
+    ArrayList lista = c.consulta("id,nombre", "proveedor", "id is not null", 2);
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,27 +39,21 @@
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="proveedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="proveedor">
                                         <a class="nav-link text-white" href="AgregarProveedor.jsp">Agregar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="ModificarProveedor.jsp">Modificar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="BuscarProveedor.jsp">Buscar&nbsp;proveedor</a>
-                                        <a class="nav-link text-white" href="EliminarProveedor.jsp">Eliminar&nbsp;proveedor</a>
+                                            <a class="nav-link text-white" href="BuscarProveedor.jsp">Gestionar&nbsp;proveedor</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                                    <a href="#" class="nav-link dropdown-toggle text-white" id="producto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="producto">
                                         <a class="nav-link text-white" href="AgregarProducto.jsp">Agregar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="ModificarProducto.jsp">Modificar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Buscar&nbsp;producto</a>
-                                        <a class="nav-link text-white" href="EliminarProducto.jsp">Eliminar&nbsp;producto</a>
+                                        <a class="nav-link text-white" href="BuscarProducto.jsp">Gestionar&nbsp;producto</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle text-white" id="orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orden&nbsp;de&nbsp;compra</a>
                                     <div class="dropdown-menu bg-primary" aria-labelledby="orden">
                                         <a class="nav-link text-white" href="AgregarOrden.jsp">Agregar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="ModificarOrden.jsp">Modificar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Buscar&nbsp;orden</a>
-                                        <a class="nav-link text-white" href="Devolucion.jsp">Devoluci&oacute;n</a>
+                                        <a class="nav-link text-white" href="BuscarOrden.jsp">Gestionar&nbsp;orden</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -68,7 +69,7 @@
         <div class="container"<!-- INICIO DE SECCION PRINCIPAL -->
             <div class="div-interno-centrado">
                 <div class="form-centrado">
-                    <form class="form-control" method="POST" autocomplete="off" onsubmit="" action="">
+                    <form class="form-control" method="POST" autocomplete="off" action="../AgregarProducto">
                         <table>
                             <tbody>
                                 <tr>
@@ -84,7 +85,17 @@
                                         Proveedor
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" maxlength="20" id="provProd" name="provProd" required="required">
+                                        <select id='idProv' name="idProv" class='form-control form-control-sm' required="required">
+                                            <option value='' selected='selected'>Selecciona&nbsp;una&nbsp;opci&oacute;n...</option>
+                                            <%
+                                                int i = 0;
+                                                while(i < lista.size())
+                                                {
+                                                   out.println("<option value='"+lista.get(i)+"'>"+lista.get(i+1)+"</option>");
+                                                   i = i + 2;
+                                                }
+                                            %>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,7 +103,7 @@
                                         Precio
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control form-control-sm" id="precioProd" name="precioProd" required="required">
+                                        <input type="number" min="0" class="form-control form-control-sm" id="precioProd" name="precioProd" required="required">
                                     </td>
                                 </tr>
                                 <tr>

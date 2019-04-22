@@ -5,14 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Properties;
-import neii.sap.clases.Area;
-import neii.sap.clases.Cliente;
-import neii.sap.clases.Productos;
-import neii.sap.clases.Servicios;
 
 public class Conexion {
     
@@ -29,8 +23,8 @@ public class Conexion {
     public void openDB() throws SQLException {
         Properties connProp = new Properties();
         connProp.put("user", "postgres");
-        connProp.put("password", "root");
-        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ALQUILER", connProp);
+        connProp.put("password", "Bioshock05");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Telecom", connProp);
     }
         
 
@@ -83,61 +77,5 @@ public class Conexion {
         Integer rs = ps.executeUpdate();
         closeDB();
         return rs;
-    }
-    
-    public LinkedList area() throws SQLException{
-        LinkedList<Area> lista = new LinkedList<>();
-        Statement stmt;        
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM area");
-            while (rs.next()) {
-                Area a = new Area();
-                a.setId(rs.getInt("id"));             
-                a.setNombre(rs.getString("descripcion"));                
-                lista.add(a);
-            }                    
-        return lista;
-    }
-    
-    public LinkedList servicio() throws SQLException{
-        LinkedList<Servicios> lista = new LinkedList<>();
-        Statement stmt;        
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM servicio");
-            while (rs.next()) {
-                Servicios a = new Servicios();
-                a.setId(rs.getInt("id"));             
-                a.setNombre(rs.getString("nombre"));                
-                lista.add(a);
-            }                    
-        return lista;
-    }
-    
-    public LinkedList producto() throws SQLException{
-        LinkedList<Productos> lista = new LinkedList<>();
-        Statement stmt;        
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM producto WHERE disponibles != 0");
-            while (rs.next()) {
-                Productos a = new Productos();
-                a.setId(rs.getInt("id"));             
-                a.setNombre(rs.getString("nombre"));
-                lista.add(a);
-            }                    
-        return lista;
-    }
-    
-    public LinkedList cliente() throws SQLException{
-        LinkedList<Cliente> lista = new LinkedList<>();
-        Statement stmt;        
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT id,nombre FROM cliente");
-            while (rs.next()) {
-                Cliente a = new Cliente();
-                a.setId(rs.getInt("id"));             
-                a.setNombre(rs.getString("nombre"));                
-                lista.add(a);
-            }                    
-        return lista;
     }
 }

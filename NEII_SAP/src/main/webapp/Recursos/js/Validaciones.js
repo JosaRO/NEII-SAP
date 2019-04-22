@@ -13,6 +13,21 @@ function fecha(fechaMenor,fechaMayor){//Fechas en formato MES/DIA/ANIO con dos d
     var mayor = Date.parse(fechaMayor);
     if((menor < mayor) === false){return false;}
 }
+
+$(document).ready(function(){
+    $("#errorLogin").hide();
+    
+    $(document).on("submit","#login", function(event){
+        var $form = $(this);
+        $.post($form.attr("action"), $form.serialize(), function(responseText){
+            if(responseText === "1"){
+                $("#errorLogin").show();
+            }
+        });
+        event.preventDefault();
+    });
+});
+
 //********************************************** RECURSOS HUMANOS ***********************************************************
 
 function buscarEmpleado(){

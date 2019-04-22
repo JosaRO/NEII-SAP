@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% request.getSession().invalidate(); %>
 <!DOCTYPE html>
 <html>
@@ -14,13 +15,13 @@
     <body onload="regreso();">
         <div class="div-centrado">
             <div class="form-centrado">
-                <form class="form-control" method="POST" autocomplete="off" action="IniciarSesion">
+                <form class="form-control" id="login" name="login" method="POST" autocomplete="off" action="IniciarSesion">
                     <table>
                         <tbody>
                             <tr>
                                 <td>
                                     <center>
-                                        <h1>¡Bienvenido(a)&nbsp;al&nbsp;SAP!</h1>
+                                        <h1>Â¡Bienvenido(a)&nbsp;al&nbsp;SAP!</h1>
                                     </center>
                                 </td>
                             </tr>
@@ -34,7 +35,7 @@
                             <tr>
                                 <td>
                                     <center>
-                                        <input type="password" id="pass" name="pass" class="form-control-lg" placeholder="CONTRASEÑA" required="required">
+                                        <input type="password" id="pass" name="pass" class="form-control-lg" placeholder="CONTRASEÃ‘A" required="required">
                                     </center>
                                 </td>
                             </tr>
@@ -48,6 +49,11 @@
                         </tbody>
                     </table>
                 </form>
+            </div>
+            <div class="container-fluid" id="errorLogin" name="errorLogin">
+                <center>
+                    <label style="color: red; text-decoration: underline;">Usuario&nbsp;o&nbsp;contrase&ntilde;a&nbsp;incorrectos</label>
+                </center>
             </div>
         </div>
     </body>
